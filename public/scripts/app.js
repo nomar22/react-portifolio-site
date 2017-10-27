@@ -1,14 +1,37 @@
-console.log('App.js is runing!')
+'use strict';
 
+console.log('App.js is runing!');
 
 // JSX - JAvascript XML
 
-//var template = <p>This is JSX from app.js!</p>;
 var template = React.createElement(
-    "h1",
-    { id: "id" },
-    "this is jsx from app.js"
-  );
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    'Indecisioning App'
+  ),
+  React.createElement(
+    'p',
+    null,
+    'This is some info'
+  ),
+  React.createElement(
+    'o1',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Item 1'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Item 2'
+    )
+  )
+);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot );
+ReactDOM.render(template, appRoot);
