@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 
 console.log('App.js is runing!');
@@ -75,3 +76,5 @@ var templateDois = React.createElement(
 
 var appRoot = document.getElementById('app');
 ReactDOM.render(templateDois, appRoot);
+=======
+>>>>>>> 4fa1b152493e6152815af4c5e2c6a6f44aa4305a

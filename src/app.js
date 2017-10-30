@@ -32,10 +32,16 @@ function getLocation(location){
 };
 
 
+function getLocation(location){
+    if(location){
+        return <p>Location : {location}</p>
+    }
+}
+
 var templateDois = (
     <div>
-        <h1>{user.name ? user.name:'Anonymous'}</h1>
-        <p>Age:{user.age} </p>
+        <h1>{user.name?user.name:'Anonimo'}</h1>
+       {user.age >18 && <p>Age:{user.age} </p>}
         {getLocation(user.location)}
     </div>
 );
