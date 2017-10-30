@@ -2,8 +2,9 @@ console.log('App.js is runing!')
 
 
 var app ={
-    title: 'Indecision  app',
-    subtile:' this is from object'
+    title: 'Indecision  apps',
+    subtile:' this is from object',
+    options['One', 'Two']
 }
 
 var template = (
@@ -19,19 +20,25 @@ var template = (
 
 
 var user ={
-    name :'Rafael',
-    age: 31,
+    name :'',
+    age: 15,
     location : 'Nova Lima'
 
 }
 
+function getLocation(location){
+    if(location){
+        return <p>Location : {location}</p>
+    }
+}
+
 var templateDois = (
     <div>
-        <h1>{user.name + '!'}</h1>
-        <p>Age:{user.age} </p>
-        <p> location: {user.location} </p>
+        <h1>{user.name?user.name:'Anonimo'}</h1>
+       {user.age >18 && <p>Age:{user.age} </p>}
+        {getLocation(user.location)}
     </div>
 )
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot );
+ReactDOM.render(templateDois, appRoot );
