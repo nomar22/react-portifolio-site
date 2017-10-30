@@ -1,32 +1,19 @@
 'use strict';
 
-var nameVar = 'Egidio';
-var nameVar = 'Rafael';
-console.log('nameVar', nameVar);
+var add = function add(a, b) {
+    //console.log(arguments);
+    return a + b;
+};
 
-var nameLet = 'Jen';
+console.log(add(2, 3, 20));
 
-console.log('nameLet', nameLet);
+var user = {
+    name: 'Rafael',
+    cities: ['bh', 'contagem', 'brisbane'],
+    printPlacesLived: function printPlacesLived() {
+        console.log(this.name);
+        console.log(this.cities);
+    }
+};
 
-var nameConst = 'Frank';
-console.log('nameConst', nameConst);
-
-function getPetName() {
-    var petName = 'lua';
-    return petName;
-}
-
-var petName = getPetName();
-
-console.log(petName);
-
-//Block scoping
-
-var fullName = 'Rafael Egidio';
-var firstName = void 0;
-if (fullName) {
-    firstName = fullName.split(' ')[0];
-    console.log(firstName);
-}
-
-console.log(firstName);
+user.printPlacesLived();

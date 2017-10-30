@@ -1,13 +1,13 @@
 console.log('App.js is runing!')
 
 
-var app ={
+const app ={
     title: 'Indecision  apps',
     subtile:' this is from object',
     options: ['One', 'Two']
 };
 
-var template = (
+const template = (
 <div>
     <h1>{app.title}</h1>
     {app.subtile&&<p>{app.subtile}</p>}
@@ -20,7 +20,7 @@ var template = (
 );
 
 
-var user ={
+const user ={
     name :'',
     age: 31,
     location : ''
@@ -34,7 +34,7 @@ function getLocation(location){
     }
 }
 
-var templateDois = (
+const templateDois = (
     <div>
         <h1>{user.name?user.name:'Anonimo'}</h1>
        {user.age >18 && <p>Age:{user.age} </p>}
@@ -42,5 +42,5 @@ var templateDois = (
     </div>
 );
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 ReactDOM.render(template, appRoot );
