@@ -2,14 +2,16 @@ console.log('App.js is runing!')
 
 
 var app ={
-    title: 'Indecision  app',
-    subtile:' this is from object'
+    title: 'Indecision  apps',
+    subtile:' this is from object',
+    options: ['One', 'Two']
 };
 
 var template = (
 <div>
- <h1>{app.title}</h1>
- <p>{app.subtile}</p>
+    <h1>{app.title}</h1>
+    {app.subtile&&<p>{app.subtile}</p>}
+    <p>{app.options.length >0? 'Here your Options': 'no Options'}</p>
  <o1>
     <li>Item 1</li>
     <li>Item 2</li>
@@ -23,12 +25,6 @@ var user ={
     age: 31,
     location : ''
 
-};
-
-function getLocation(location){
-    if(location){
-        return <p>Location: {location} </p>;
-    } 
 };
 
 
@@ -47,4 +43,4 @@ var templateDois = (
 );
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(templateDois, appRoot );
+ReactDOM.render(template, appRoot );
