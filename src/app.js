@@ -4,7 +4,7 @@ console.log('App.js is runing!')
 var app ={
     title: 'Indecision  app',
     subtile:' this is from object'
-}
+};
 
 var template = (
 <div>
@@ -19,19 +19,26 @@ var template = (
 
 
 var user ={
-    name :'Rafael',
+    name :'',
     age: 31,
-    location : 'Nova Lima'
+    location : ''
 
-}
+};
+
+function getLocation(location){
+    if(location){
+        return <p>Location: {location} </p>;
+    } 
+};
+
 
 var templateDois = (
     <div>
-        <h1>{user.name + '!'}</h1>
+        <h1>{user.name ? user.name:'Anonymous'}</h1>
         <p>Age:{user.age} </p>
-        <p> location: {user.location} </p>
+        {getLocation(user.location)}
     </div>
-)
+);
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot );
+ReactDOM.render(templateDois, appRoot );

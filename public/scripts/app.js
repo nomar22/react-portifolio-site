@@ -37,10 +37,22 @@ var template = React.createElement(
 );
 
 var user = {
-    name: 'Rafael',
+    name: '',
     age: 31,
-    location: 'Nova Lima'
+    location: ''
 
+};
+
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location,
+            ' '
+        );
+    }
 };
 
 var templateDois = React.createElement(
@@ -49,7 +61,7 @@ var templateDois = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name + '!'
+        user.name ? user.name : 'Anonymous'
     ),
     React.createElement(
         'p',
@@ -58,14 +70,8 @@ var templateDois = React.createElement(
         user.age,
         ' '
     ),
-    React.createElement(
-        'p',
-        null,
-        ' location: ',
-        user.location,
-        ' '
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateDois, appRoot);
