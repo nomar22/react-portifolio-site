@@ -3,15 +3,15 @@ console.log('App.js is runing!')
 
 const app ={
     title: 'Indecision  apps',
-    subtile:' this is from object',
+   subtile:' this is from object',
     options: ['One', 'Two']
 };
 
 const template = (
 <div>
     <h1>{app.title}</h1>
-    {app.subtile&&<p>{app.subtile}</p>}
-    <p>{app.options.length >0? 'Here your Options': 'no Options'}</p>
+    {app.subtile && <p>{app.subtile}</p>}
+    <p>{app.options.length >0? 'Here your  Options': 'No Options'}</p>
  <o1>
     <li>Item 1</li>
     <li>Item 2</li>
