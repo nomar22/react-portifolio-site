@@ -1,5 +1,5 @@
-var nameVar='Egidio';
-var nameVar='Rafael';
+let nameVar='Egidio';
+let nameVar='Rafael';
 console.log('nameVar',nameVar);
 
 let nameLet = 'Jen';
