@@ -1,4 +1,4 @@
-console.log('App.js is alterado!')
+console.log('App.js is careca!')
 
 
 const app ={
