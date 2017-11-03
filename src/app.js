@@ -1,4 +1,4 @@
-console.log('App.js is runing!')
+console.log('App.js is alterado!')
 
 
 const app ={
