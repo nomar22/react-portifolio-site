@@ -11,24 +11,11 @@ var user = {
     name: 'Rafael',
     cities: ['bh', 'contagem', 'brisbane'],
     printPlacesLived: function printPlacesLived() {
-        var _this = this;
+        console.log(this.name);
+        console.log(this.cities);
 
-        var cityMessages = this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-
-        return cityMessages;
+        this.cities.forEach;
     }
 };
 
-console.log(user.printPlacesLived());
-
-//chalenge Aerea
-
-var multiplier = {
-    //number - array of numbers
-    //multiplyBy - number
-    // multiply - retunr a new array where number have been multiplied
-    multiply: function multiply() {}
-};
-console.log(multiplier.multiply());1, 2, 3;
+user.printPlacesLived();
