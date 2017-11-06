@@ -1,20 +1,36 @@
 
-const add= (a, b) =>{
-    //console.log(arguments);
-    return a + b;
-};
+    const add= (a, b) =>{
+        //console.log(arguments);
+        return a + b;
+    };
 
-console.log(add(2,3,20));
+    console.log(add(2,3,20));
 
-const user = {
-    name :'Rafael',
-    cities : ['bh', 'contagem', 'brisbane'],
-    printPlacesLived: function(){
-        console.log(this.name);
-        console.log(this.cities);
+    const user = {
+        name :'Rafael',
+        cities : ['bh', 'contagem', 'brisbane'],
+        placesLived (){     
+            return this.cities.map((city)=>{
+                let time = city!='brisbane'?' has lived ':' will live in ';
+                return this.name +time+city+ '!';
+            });
+        }
+    };
 
-        this.cities.forEach
+    console.log(user.placesLived());
+
+const multiplier = {
+    numbers : [1,2,3],
+    multiplyBy:2,
+    multiply(){
+        return this.numbers.map((number)=> number * this.multiplyBy);
     }
+    // numbers - array of numbers
+    //multiplyBy - single number
+    // multiply - retunr a new array where the number have been multiplied
+
 };
 
-user.printPlacesLived();
+
+console.log(multiplier.multiply());//{1,2,3} - {2,4,6}
+console.log(multiplier.numbers);
