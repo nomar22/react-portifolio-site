@@ -20,7 +20,7 @@ const onFormSubmit = (e) => {
 
 };
 
-const removeOptions = () => {
+const removeAllOptions = () => {
     app.options = [];
     renderApp();
 }
@@ -35,7 +35,7 @@ const renderApp = () => {
             {app.subtile && <p>{app.subtile}</p>}
             <p>{app.options.length > 0 ? 'Here your  Options' : 'No Options'}</p>
             <p>{app.options.length}</p>
-            <button onClick={removeOptions}> Remove All </button>
+            <button onClick={removeAllOptions}> Remove All </button>
 
             <ol>
                 {
