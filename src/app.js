@@ -1,46 +1,57 @@
-console.log('App.js is careca!')
 
 
-const app ={
-    title: 'Indecision  apps',
-   subtile:' this is from object',
-    options: ['One', 'Two']
+
+const app = {
+    title: 'Indecision  App',
+    subtile: ' this is from object',
+    options: []
 };
+const onFormSubmit = (e) => {
+    e.preventDefault();
 
-const template = (
-<div>
-    <h1>{app.title}</h1>
-    {app.subtile && <p>{app.subtile}</p>}
-    <p>{app.options.length >0? 'Here your  Options': 'No Options'}</p>
- <o1>
-    <li>Item 1</li>
-    <li>Item 2</li>
- </o1>
-</div>
-);
+    const option = e.target.elements.opcao.value;
 
-
-const user ={
-    name :'',
-    age: 31,
-    location : ''
-
-};
-
-
-function getLocation(location){
-    if(location){
-        return <p>Location : {location}</p>
+    if (option) {
+        app.options.push(option);
+        e.target.elements.opcao.value = '';
     }
+
+    renderApp();
+
+};
+
+const removeOptions = () => {
+    app.options = [];
+    renderApp();
 }
 
-const templateDois = (
-    <div>
-        <h1>{user.name?user.name:'Anonimo'}</h1>
-       {user.age >18 && <p>Age:{user.age} </p>}
-        {getLocation(user.location)}
-    </div>
-);
-
 const appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot );
+
+
+const renderApp = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtile && <p>{app.subtile}</p>}
+            <p>{app.options.length > 0 ? 'Here your  Options' : 'No Options'}</p>
+            <p>{app.options.length}</p>
+            <button onClick={removeOptions}> Remove All </button>
+
+            <ol>
+                {
+                    app.options.map((option)=><li key={option}> Item: {option}</li>)
+                }
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="opcao" />
+                <button> Add Option </button>
+
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+
+
+};
+
+renderApp();

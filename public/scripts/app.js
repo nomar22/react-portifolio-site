@@ -1,42 +1,83 @@
 'use strict';
 
-var add = function add(a, b) {
-    //console.log(arguments);
-    return a + b;
+var app = {
+    title: 'Indecision  App',
+    subtile: ' this is from object',
+    options: []
 };
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
 
-console.log(add(2, 3, 20));
+    var option = e.target.elements.opcao.value;
 
-var user = {
-    name: 'Rafael',
-    cities: ['bh', 'contagem', 'brisbane'],
-    placesLived: function placesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            var time = city != 'brisbane' ? ' has lived ' : ' will live in ';
-            return _this.name + time + city + '!';
-        });
+    if (option) {
+        app.options.push(option);
+        e.target.elements.opcao.value = '';
     }
+
+    renderApp();
 };
 
-console.log(user.placesLived());
-
-var multiplier = {
-    numbers: [1, 2, 3],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
-    }
-    // numbers - array of numbers
-    //multiplyBy - single number
-    // multiply - retunr a new array where the number have been multiplied
-
+var removeOptions = function removeOptions() {
+    app.options = [];
+    renderApp();
 };
 
-console.log(multiplier.multiply()); //{1,2,3} - {2,4,6}
-console.log(multiplier.numbers);
+var appRoot = document.getElementById('app');
+
+var renderApp = function renderApp() {
+    var template = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            app.title
+        ),
+        app.subtile && React.createElement(
+            'p',
+            null,
+            app.subtile
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here your  Options' : 'No Options'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length
+        ),
+        React.createElement(
+            'button',
+            { onClick: removeOptions },
+            ' Remove All '
+        ),
+        React.createElement(
+            'ol',
+            null,
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    ' Item: ',
+                    option
+                );
+            })
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'opcao' }),
+            React.createElement(
+                'button',
+                null,
+                ' Add Option '
+            )
+        )
+    );
+    ReactDOM.render(template, appRoot);
+};
+
+renderApp();
