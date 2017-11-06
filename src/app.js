@@ -20,12 +20,13 @@ const onFormSubmit = (e) => {
 
 };
 
-const removeOptions = ()=>{
+const removeOptions = () => {
     app.options = [];
     renderApp();
 }
 
 const appRoot = document.getElementById('app');
+
 
 const renderApp = () => {
     const template = (
@@ -34,14 +35,17 @@ const renderApp = () => {
             {app.subtile && <p>{app.subtile}</p>}
             <p>{app.options.length > 0 ? 'Here your  Options' : 'No Options'}</p>
             <p>{app.options.length}</p>
-            <o1>
-                <li>Item 1</li>
-                <li>Item 2</li>
-            </o1>
+            <button onClick={removeOptions}> Remove All </button>
+
+            <ol>
+                {
+                    app.options.map((option)=><li key={option}> Item: {option}</li>)
+                }
+            </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="opcao" />
                 <button> Add Option </button>
-                <button onClick={removeOptions}> Remove All </button>
+
             </form>
         </div>
     );
