@@ -1,40 +1,59 @@
-class Header extends React.Component {
-    render(){
-        return(
+class IndecisionApp extends React.Component {
+    render() {
+        const title = 'Indecision';
+        const subtitle = 'Put your life in the hands of a computer';
+        const options = ['Thing one', 'Thing two', 'Thing three']
+        return (
             <div>
-                <h1>Indecision</h1>
-                <h2>Put your life in the hands of a computer</h2>
+                <Header title={title} subtitle={subtitle} />
+                <Action />
+                <Options options={options} />
+                <AddOption />
+            </div>
+        );
+    }
+}
+
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
             </div>
         );
     }
 }
 
 class Action extends React.Component {
-    render(){
+    render() {
         return (
             <div>
-            <button>What should I do?</button>
+                <button>What should I do?</button>
             </div>
         );
     }
 
 }
 
+
 class Option extends React.Component {
-    render(){
-        return(
-            <li> Option </li>
+    render() {
+        return (
+            <li key={this.props.optionText}> {this.props.optionText} </li>
         );
     }
 }
-class Options extends React.Component{
-    render(){
+
+//Setup options prop Options component
+// Render the length of the array
+class Options extends React.Component {
+    render() {
         return (
-            <div> 
+            <div>
                 <ol>
-                    <Option/> 
-                    <Option/> 
-                    <Option/> 
+                    {this.props.options.map((opcao) => <Option key={opcao} optionText={opcao} /> )}
+
                 </ol>
             </div>
         );
@@ -42,8 +61,8 @@ class Options extends React.Component{
     }
 }
 
-class AddOption extends React.Component{
-    render(){
+class AddOption extends React.Component {
+    render() {
         return (
             <div>
                 <button>Add Option</button>
@@ -52,16 +71,4 @@ class AddOption extends React.Component{
     }
 }
 
-
-const jsx = (
-    <div>
-        <Header />
-        <header />
-        <Action />
-        <Options /> 
-           
-        <AddOption />
-    </div>
-);
-
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
