@@ -8,6 +8,8 @@ console.log(square(3));
 //    return x * x;
 //};
 const squareArrow = (x) => x * x ;
+
+
 console.log(squareArrow(8));
 
 

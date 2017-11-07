@@ -24,8 +24,8 @@ var Person = function () {
     }
 
     _createClass(Person, [{
-        key: 'getGretting',
-        value: function getGretting() {
+        key: 'getGreeting',
+        value: function getGreeting() {
             // return 'Hi. I am ' + this.name  + '!';
             return 'Hi. I am  ' + this.name + ' !';
         }
@@ -83,18 +83,13 @@ var Traveller = function (_Person2) {
     }
 
     _createClass(Traveller, [{
-        key: 'getDescription',
-        value: function getDescription() {
-            var description = _get(Traveller.prototype.__proto__ || Object.getPrototypeOf(Traveller.prototype), 'getDescription', this).call(this);
-            if (this.hasHomeLocation()) {
-                description += ' I am from ' + this.homeLocation;
+        key: 'getGreeting',
+        value: function getGreeting() {
+            var greeting = _get(Traveller.prototype.__proto__ || Object.getPrototypeOf(Traveller.prototype), 'getGreeting', this).call(this);
+            if (this.homeLocation) {
+                greeting += ' I am visting from ' + this.homeLocation + '.';
             }
-            return description;
-        }
-    }, {
-        key: 'hasHomeLocation',
-        value: function hasHomeLocation() {
-            return !!this.homeLocation;
+            return greeting;
         }
     }]);
 
@@ -111,10 +106,10 @@ var me = new Person('Rafael', 32);
 var other = new Student();
 var aluno = new Student('Aluno', 26, 'Computer Science');
 var viajante = new Traveller('Egidio', 32, 'Contagem');
-var forasteiro = new Traveller('Jhon', undefined);
+var forasteiro = new Traveller('Jhon');
 
 // console.log(me.hasMajor());
-console.log(other.getDescription());
-console.log(aluno.getDescription());
-console.log(viajante.getDescription());
-console.log(forasteiro.getDescription());
+console.log(other.getGreeting());
+console.log(aluno.getGreeting());
+console.log(viajante.getGreeting());
+console.log(forasteiro.getGreeting());

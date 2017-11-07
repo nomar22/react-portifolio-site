@@ -22,6 +22,7 @@ const onFormSubmit = (e) => {
 
 const removeAllOptions = () => {
     app.options = [];
+    
     renderApp();
 };
 
@@ -35,7 +36,7 @@ const appRoot = document.getElementById('app');
 
 
 const renderApp = () => {
-    const template = (
+    const template = ( 
         <div>
             <h1>{app.title}</h1>
             {app.subtile && <p>{app.subtile}</p>}
