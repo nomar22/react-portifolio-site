@@ -1,3 +1,4 @@
+
 class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision';
@@ -26,10 +27,14 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+    handlePick() {
+        alert('Handled');
+    }
+
     render() {
         return (
             <div>
-                <button>What should I do?</button>
+                <button onClick={this.handlePick}>What should I do?</button>
             </div>
         );
     }
@@ -45,14 +50,25 @@ class Option extends React.Component {
     }
 }
 
-//Setup options prop Options component
-// Render the length of the array
+
 class Options extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
+    handleRemoveAll() {
+        console.log(this.props.options)
+        // alert("Removed");
+    }
+
     render() {
         return (
             <div>
+                <button onClick={this.handleRemoveAll}> Remove All </button>
                 <ol>
-                    {this.props.options.map((opcao) => <Option key={opcao} optionText={opcao} /> )}
+                    {this.props.options.map((opcao) => <Option key={opcao} optionText={opcao} />)}
 
                 </ol>
             </div>
@@ -61,11 +77,26 @@ class Options extends React.Component {
     }
 }
 
+// 1. Setup the form with text Input
+// 2. wire up onSubmit
+// 3. handleAddOption
 class AddOption extends React.Component {
+    handleAddOption(e) {
+        e.preventDefault();
+        const option = e.target.elements.opcao.value.trim();
+        if (option) {
+            alert(option);
+        }
+
+    }
+
     render() {
         return (
             <div>
-                <button>Add Option</button>
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="opcao" />
+                    <button> Add Option </button>
+                </form>
             </div>
         );
     }
