@@ -16,8 +16,57 @@ class Person {
     }
 }
 
-const me = new Person('Rafael', 32);
-const other = new Person();
+class Student extends Person{
+    constructor(name, age, major){
+        super(name,age);
+        this.major = major;
+    }
 
-console.log(me.getDescription());
+    hasMajor(){
+        return !!this.major;
+    }
+
+    getDescription(){
+        let description = super.getDescription();
+        if(this.hasMajor()) {
+            description += ` and he is a student in ${this.major}`;
+        }
+        return description ;
+    }
+
+}
+
+
+class Traveller extends Person {
+    constructor(name, age, homeLocation){
+        super(name,age);
+        this.homeLocation = homeLocation;
+    }
+    getDescription(){
+        let description = super.getDescription();
+        if(this.hasHomeLocation()){
+            description += ` I am from ${this.homeLocation}`;
+        }
+        return description;
+    }
+    hasHomeLocation (){
+        return !!this.homeLocation;
+    }
+
+}
+// Traveller -> Person
+// Add suport for homeLocation
+//Override getGreeting 
+// 1. Hi. I am Egidio. I`m visting from Philiadelphia.
+// 2 . Hi. I am Egidio.
+const me = new Person('Rafael', 32);
+const other = new Student();
+const aluno = new Student('Aluno', 26 , 'Computer Science');
+const viajante = new Traveller('Egidio', 32, 'Contagem');
+const forasteiro = new Traveller('Jhon',undefined);
+
+// console.log(me.hasMajor());
 console.log(other.getDescription());
+console.log(aluno.getDescription());
+console.log(viajante.getDescription());
+console.log(forasteiro.getDescription());
