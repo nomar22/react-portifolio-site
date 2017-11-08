@@ -1,19 +1,52 @@
-class Counter extends React.Component{
-    render(){
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleAddOne = this.handleAddOne.bind(this);
+        this.handleMinusOne = this.handleMinusOne.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+
+        this.state = {
+            count: 0
+        };
+    }
+
+    handleAddOne() {
+        this.setState((previousState) => {
+            return {
+                count: previousState.count + 1
+            };
+        });
+
+    }
+
+    handleMinusOne() {
+        this.setState((previousState) => {
+            return {
+                count: previousState.count -1
+            };
+        });
+    }
+
+    handleReset() {
+        this.setState(()=>{
+            return {
+                count: 0
+            }
+        });
+    }
+
+    render() {
         return (
             <div>
-                <h1>Count : </h1>
-                <button>+1</button>
-                <button>-1</button>
-                <button>reset</button>
+                <h1>Count : {this.state.count} </h1>
+                <button onClick={this.handleAddOne}>+1</button>
+                <button onClick={this.handleMinusOne}>-1</button>
+                <button onClick={this.handleReset}>RESET</button>
             </div>
         );
     }
 }
 
-// Create three Methods : handleAddOn, MinusOne, HandleReset
-//use console.log to print method name
-// wire up onClick && bind in the constructor 
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
 
