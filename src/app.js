@@ -17,15 +17,12 @@ class IndecisionApp extends React.Component {
         });
     };
 
-    // handleAddOption(e){
-    //     e.preventDefault();
-    //     const option = e.target.elements.opcao.value.trim();
-    //     e.target.elements.opcao.value = '';
-    //     
-
-    // }
     handleAddOption(option) {
-        // console.log(option);
+        if (!option) {
+            return 'Enter a valid value';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'This options already exists';
+        }
         this.setState((previousState) => {
             return {
                 options: previousState.options.concat(option)
@@ -124,19 +121,26 @@ class AddOption extends React.Component {
     constructor(props) {
         super(props);
         this.handleAddOption = this.handleAddOption.bind(this);
+        this.state = {
+            error : undefined
+        }
     }
     handleAddOption(e) {
         e.preventDefault();
         const option = e.target.elements.opcao.value.trim();
+        const error = this.props.handleAddOption(option);
+
+        this.setState(()=>{
+            return {error};
+        });
+        
         e.target.elements.opcao.value = '';
-        if (option) {
-            this.props.handleAddOption(option);
-        }
     }
 
     render() {
         return (
             <div>
+                {this.state.error && <p style={{color: "red"}} >{this.state.error}</p>}
                 <form onSubmit={this.handleAddOption}>
                     <input type="text" name="opcao" />
                     <button> Add Option </button>
