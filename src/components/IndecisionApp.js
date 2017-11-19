@@ -3,15 +3,18 @@ import AddOption from './AddOption';
 import Action from './Action';
 import Header from './Header';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 
 
 export default class IndecisionApp extends React.Component {
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
 
     handleDeleteOptions = () => {
+        console.log('delete all options');
         this.setState(() => ({ options: [] }));
     }
 
@@ -36,7 +39,20 @@ export default class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        alert(option);
+        // alert(option); 
+        this.setState(() => ({
+            selectedOption: option
+
+        })
+        );
+    }
+
+    handleCloseModal = () => {
+        console.log('fechar Modal');
+        this.setState(() => ({
+            selectedOption: undefined
+        }));
+
     }
 
     componentDidMount = () => {
@@ -62,7 +78,7 @@ export default class IndecisionApp extends React.Component {
     componentWillUnmount = () => {
         console.log('componentUnmount');
     }
-  
+
 
 
     render() {
@@ -80,6 +96,11 @@ export default class IndecisionApp extends React.Component {
                 />
                 <AddOption
                     handleAddOption={this.handleAddOption}
+                />
+                <OptionModal
+                    selectedOption={this.state.selectedOption}
+                    handleCloseModal={this.handleCloseModal}
+
                 />
             </div>
         );
