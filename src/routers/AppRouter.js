@@ -1,57 +1,38 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import {ExpenseDashBoardPage} from '../components/ExpenseDashBoardPage';
+import {AddExpensePage} from '../components/AddExpensePage';
+import {NotFoundPage} from '../components/NotFoundPage';
+import {HelpPage} from '../components/HelpPage';
+import {Header} from '../components/Header';
+import {EditExpensePage} from '../components/EditExpensePage';
 
 
-const ExpenseDashBoardPage = () => (
-    <div>
-        This is my dashBoard Component
-    </div>
-);
 
-const AddExpensePage = () => (
-    <div>
-        This is my AddExpense Component
-    </div>
-);
-
-//edit 
-const EditExpensePage = () => (
-    <div>This is my edit expense page</div>
-);
-
-//help
-const HelpPage = () => (
-    <div> This is my help page </div>
-);
-
-//help
-const NotFoundPage = () => (
-    <div>
-        404!-  <Link to="/">Go home</Link>
-    </div>
-);
-
-const Header = () => (
+const Header2 = () =>(
     <header>
         <h1>Expensify</h1>
-        <NavLink activeClassName="is-active" to="/" exact={true} > Dashboard </NavLink>
-        <NavLink activeClassName="is-active" to="/create" > Add Expense </NavLink>
-        <NavLink activeClassName="is-active" to="/edit" > Edit Expense</NavLink>
-        <NavLink activeClassName="is-active" to="/help" > Help</NavLink>
+        <NavLink to="/"  activeClassName="is-active" exact={true} > DashBoard /</NavLink>
+        <NavLink to="/create"  activeClassName="is-active" > Criar /</NavLink>
+        <NavLink to="/edit" activeClassName="is-active"> Editar/</NavLink>
+        <NavLink to="/help" activeClassName="is-active"> Ajuda</NavLink>
     </header>
 );
-const routes = (
-    <BrowserRouter>
-        <div>
-            <Header />
-            <Switch>
-                <Route path="/" component={ExpenseDashBoardPage} exact={true} />
-                <Route path="/create" component={AddExpensePage} />
-                <Route path="/edit" component={EditExpensePage} />
-                <Route path="/help" component={HelpPage} />
-                <Route component={NotFoundPage} />
-            </Switch>
-        </div>
 
+const AppRouter = ()=>(
+    <BrowserRouter>
+    <div>
+        <Header2 />
+        <Switch>
+        <Route path="/" component={ExpenseDashBoardPage} exact={true} />
+        <Route path="/create" component={AddExpensePage} />
+        <Route path="/edit" component={EditExpensePage} />
+        <Route path="/help" component={HelpPage} />
+        <Route component={NotFoundPage} />
+    </Switch>
+    </div>
+        
     </BrowserRouter>
 );
+
+export default AppRouter;
