@@ -2,30 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
-
-
-const HomePage = () => (
-    <div>
-        <h4>This is my DashBoard Page </h4>
-    </div>
-
-);
-
-const Contact = () => (
-    <div>
-        <h4>My email: nomar22@gmail.com</h4>
-    </div>
-);
-
-const PortFolio = () => (
-    <div>
-        <h1>My Work</h1>
-        <h4>Checkout some of my works</h4>
-        <NavLink to="/portfolio_detail/1" >Work 1</NavLink>
-        <NavLink to="/portfolio_detail/2">Work 2</NavLink>
-        <NavLink to="/portfolio_detail/3">Work 3</NavLink> 
-    </div>
-);
+import HomePage from '../components/HomePage';
+import Contact from '../components/Contact';
+import PortFolio from '../components/Portfolio';
 
 const PortFolioDetail = (props) => (
     <div>   
