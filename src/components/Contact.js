@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Contact = ()=> (
+
+const Contact = () => (
     <div>
-        <h1> This is my Contact in a component</h1>
+        <h4>My email: nomar22@gmail.com</h4>
     </div>
 );
+
 
 export default Contact;
