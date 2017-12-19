@@ -5,12 +5,9 @@ import Header from '../components/Header';
 import HomePage from '../components/HomePage';
 import Contact from '../components/Contact';
 import PortFolio from '../components/Portfolio';
+import PortFolioDetail from '../components/PortFolioDetail';
 
-const PortFolioDetail = (props) => (
-    <div>   
-       <h2>This is my work {props.match.params.id}</h2>
-    </div>
-);
+
 
 const AppRouter = () => (
     <BrowserRouter>
